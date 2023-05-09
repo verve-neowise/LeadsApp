@@ -1,0 +1,72 @@
+mutation CreateLead(
+    $firstName: String!,
+    $lastName: String,
+    $intentionId: Int!,
+    $phone: String,
+    $email: String,
+    $countryId: Int,
+    $cityId: Int,
+    $languagesIds: [Int!]!
+) {
+    createLead(
+        params: {
+            cityId: $cityId,
+            contacts: { phone: $phone, email: $email},
+            firstName: $firstName,
+            lastName: $lastName,
+            countryId: $countryId,
+            languageIds: $languagesIds,
+            intentionId: $intentionId
+        }
+    ) {
+        data {
+            id
+            displayName
+            avatar {
+                path
+            }
+            color {
+                id
+                main
+                secondary
+                title
+            }
+            country {
+                adWordsCode
+                emoji
+                title
+            }
+            intention {
+                id
+                title
+            }
+            adSource {
+                id
+                title
+            }
+            channelSource {
+                id
+                title
+            }
+            webSource {
+                id
+                title
+                url
+            }
+            source {
+                id
+                title
+            }
+            status {
+                backgroundColor
+                color
+                legacyColor
+                step
+                stepsCount
+                title
+            }
+            createdAt
+            updatedAt
+        }
+    }
+}

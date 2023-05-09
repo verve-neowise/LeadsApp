@@ -1,0 +1,50 @@
+query FetchDetailsOptions {
+    fetchCountries {
+        adWordsCode
+        emoji
+        id
+        phoneCode
+        shortCode1
+        shortCode2
+        title
+    }
+    languages {
+        id
+        shortCode
+        title
+    }
+    fetchLeadIntentionTypes {
+        id
+        title
+    }
+    nationalities {
+        id
+        title
+    }
+    fetchAdSources {
+        id
+        title
+    }
+    fetchChannelSources {
+        id
+        title
+    }
+    fetchWebSources {
+        id
+        title
+        url
+    }
+    fetchPropertyTypes {
+        id
+        title
+    }
+    fetchLeadStatusTypes {
+        id
+        title
+        color
+        backgroundColor
+        legacyColor
+        step
+        stepsCount
+    }
+}

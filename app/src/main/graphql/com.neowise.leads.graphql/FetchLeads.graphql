@@ -1,0 +1,53 @@
+query FetchLeads {
+    fetchLeads {
+        data {
+            id
+            displayName
+            avatar {
+                path
+            }
+            color {
+                id
+                main
+                secondary
+                title
+            }
+            country {
+                adWordsCode
+                emoji
+                title
+            }
+            intention {
+                id
+                title
+            }
+            adSource {
+                id
+                title
+            }
+            channelSource {
+                id
+                title
+            }
+            webSource {
+                id
+                title
+                url
+            }
+            source {
+                id
+                title
+            }
+            status {
+                backgroundColor
+                color
+                legacyColor
+                step
+                stepsCount
+                title
+            }
+            createdAt
+            updatedAt
+        }
+    }
+}

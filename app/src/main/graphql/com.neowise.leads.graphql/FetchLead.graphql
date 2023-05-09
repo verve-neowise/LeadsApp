@@ -1,0 +1,122 @@
+query FetchLead($leadId: Int!) {
+
+    fetchLead(params: {leadId: $leadId}) {
+        data {
+            birthDate
+            budget
+            createdAt
+            displayName
+            displaySource
+            firstName
+            id
+            itemType
+            lastName
+            personId
+            quality
+            secondName
+            seen
+            sourceDetails
+            updatedAt
+            adSource {
+                id
+                title
+            }
+            avatar {
+                id
+                path
+            }
+            channelSource {
+                id
+                title
+            }
+            city {
+                id
+                title
+            }
+            color {
+                id
+                main
+                secondary
+                title
+            }
+            contacts {
+                data {
+                    createdAt
+                    editable
+                    id
+                    typeId
+                    updatedAt
+                    emailContact {
+                        contactId
+                        email
+                        title
+                    }
+                    phoneContact {
+                        color
+                        contactId
+                        phone
+                        title
+                    }
+                    sessionContact {
+                        contactId
+                        sessionId
+                    }
+                }
+            }
+            country {
+                adWordsCode
+                emoji
+                id
+                phoneCode
+                shortCode1
+                shortCode2
+                title
+            }
+            intention {
+                id
+                title
+            }
+            languages {
+                id
+                shortCode
+                title
+            }
+            nationality {
+                countryId
+                id
+                title
+            }
+            propertyType {
+                id
+                title
+            }
+            source {
+                id
+                title
+            }
+            status {
+                backgroundColor
+                color
+                createdAt
+                id
+                legacyColor
+                step
+                stepsCount
+                title
+                updatedAt
+            }
+            webSource {
+                id
+                title
+                url
+            }
+            adTags {
+                conditional
+                field
+                id
+                key
+                value
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+package com.neowise.leads.domain.models
+
+class Lead(
+    val id: Int,
+    val displayName: String?,
+    val firstName: String?,
+    val secondName: String?,
+    val lastName: String?,
+    val budget: Double?,
+    val avatar: String?,
+    val country: Country?,
+    val city: City?,
+    val birthday: String?,
+    val intention: LeadIntentionType?,
+    val languages: List<Language>,
+    val nationality: Nationality?,
+    val propertyType: PropertyType?,
+    val status: LeadStatus?,
+    val adSource: AdSource?,
+    val displaySource: String?,
+    val channelSource: ChannelSource?,
+    val webSource: WebSource?,
+//    val adTags: List<String>?,
+//    val color: FetchLeadQuery.Color,
+//    val contacts: FetchLeadQuery.Contacts?,
+)

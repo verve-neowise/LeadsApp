@@ -1,0 +1,1221 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type ActivitiesPaginated {
+    cursor: String
+    data: [ActivityModel!]!
+    hasMore: Boolean!
+    totalCount: Int!
+}
+
+type ActivityModel {
+    call: CallModel
+    comment: CommentModel
+    createdAt: DateTime!
+    email: EmailModel
+    event: EventModel
+    id: Int!
+    initiator: PersonModel
+    lead: FLeadModel
+    leadId: Int
+    message: MessageModel
+    receiver: PersonModel
+    systemActivity: SystemActivityModel
+    type: ActivityTypeModel!
+    typeId: Int!
+    updateActivity: UpdateActivityModel
+    updatedAt: DateTime!
+}
+
+type ActivityTypeModel {
+    id: Int!
+    title: String!
+}
+
+type AdSourceModel {
+    id: Int!
+    title: String!
+}
+
+type AdTagModel {
+    category: TagCategoryModel!
+    conditional: Boolean!
+    field: String
+    id: Int!
+    key: String!
+    value: String!
+}
+
+type ArrayConstraintsModel {
+    default: [String!]
+    max: Int
+    min: Int
+}
+
+type AuthenticatedEntity {
+    accessToken: String!
+    entityType: EntityTypeModel!
+    refreshToken: String!
+    user: UserModel
+}
+
+type BooleanConstraintsModel {
+    default: Boolean
+}
+
+type BusinessProcessModel {
+    createdAt: DateTime!
+    description: String
+    entity: BusinessProcessEntity!
+    id: Int!
+    permissions: [PermissionModel!]
+    schema: [KeyedIndicatorSchemaFieldModel!]
+    title: String!
+    updatedAt: DateTime!
+}
+
+type BusinessProcessPermissionModel {
+    groupTitle: String!
+    list: [BusinessProcessPermissionValueModel!]!
+}
+
+type BusinessProcessPermissionValueModel {
+    businessProcess: BusinessProcessModel!
+    value: Boolean!
+}
+
+type CallModel {
+    callState: CallStateModel!
+    callType: CallTypeModel!
+    createdAt: DateTime!
+    duration: Int
+    endedAt: DateTime
+    id: Int!
+    initiatedPhone: String
+    leadId: Int
+    owner: PersonModel
+    phone: String
+    recipientPhone: String
+    recordingFile: FileModel
+    startedAt: DateTime
+    subtitle: ContactSubtitleModel
+    title: String!
+}
+
+type CallStateModel {
+    color: String!
+    id: Int!
+    title: String!
+}
+
+type CallTypeModel {
+    icon: String!
+    id: Int!
+    title: String!
+}
+
+type CallsPaginated {
+    cursor: String
+    data: [CallModel!]!
+    hasMore: Boolean!
+    totalCount: Int!
+}
+
+type ChannelSourceModel {
+    id: Int!
+    title: String!
+}
+
+type ChatModel {
+    createdAt: DateTime!
+    id: Int!
+    lastMessage: MessageModel
+    lastMessageId: Int
+    leadId: Int
+    permissions: [ChatPermissionModel!]!
+    photo: String!
+    subtitle: ContactSubtitleModel
+    title: String!
+    type: ChatTypeModel!
+    unreadMessagesCount: Int!
+}
+
+type ChatParticipantModel {
+    avatar: String!
+    color: String!
+    displayName: String!
+    id: Int!
+    properties: [String!]
+    subtitle: ContactSubtitleModel
+}
+
+type ChatPermissionModel {
+    id: String!
+    title: String!
+}
+
+type ChatTypeModel {
+    backgroundColor: String!
+    category: ChatCategory!
+    icon: String!
+    id: Int!
+    permissions: [ChatPermissionModel!]!
+    title: String!
+}
+
+type CityModel {
+    country: CountryModel!
+    countryId: Int!
+    id: Int!
+    offset: String!
+    offsetMs: Int!
+    timezone: String!
+    title: String!
+}
+
+type ColorModel {
+    id: Int!
+    main: String!
+    secondary: String
+    title: String!
+}
+
+type CommentModel {
+    id: Int!
+    text: String!
+}
+
+type CommunityModel {
+    id: Int!
+    title: String!
+}
+
+type CompanyTypeModel {
+    id: Int!
+    title: String!
+}
+
+type ContactCallMethod {
+    callType: CallTypeModel!
+    callsCount: Int!
+}
+
+type ContactChatMethod {
+    chatId: Int
+    chatType: ChatTypeModel!
+    messagesCount: Int!
+}
+
+type ContactCommunicationMethod {
+    calls: [ContactCallMethod!]!
+    chats: [ContactChatMethod!]!
+    contact: ContactSubtitleModel!
+}
+
+type ContactModel {
+    createdAt: DateTime!
+    editable: Boolean!
+    emailContact: EmailContactModel
+    id: Int!
+    phoneContact: PhoneContactModel
+    sessionContact: SessionContactModel
+    type: ContactTypeModel!
+    typeId: Int!
+    updatedAt: DateTime!
+}
+
+type ContactSubtitleModel {
+    color: String!
+    id: Int!
+    phone: String
+    text: String!
+}
+
+type ContactTypeModel {
+    id: Int!
+    title: String!
+}
+
+type CountryModel {
+    adWordsCode: Int
+    emoji: String
+    id: Int!
+    phoneCode: String!
+    shortCode1: String!
+    shortCode2: String!
+    title: String!
+}
+
+type DateConstraintsModel {
+    default: DateTime
+}
+
+type DepartmentModel {
+    averageScore: Int!
+    children: [DepartmentModel!]!
+    createdAt: DateTime!
+    description: String
+    details: String!
+    headUser: FUserModel
+    id: Int!
+    members(params: PaginationInput! = {take: 10}): FUsersPaginated!
+    parent: DepartmentModel
+    path: [String!]!
+    title: String!
+    updatedAt: DateTime!
+}
+
+type DepartmentTagModel {
+    id: Int!
+    title: String!
+}
+
+type EmailContactModel {
+    contactId: Int!
+    email: String!
+    title: String!
+}
+
+type EmailDraftModel {
+    attachments: [FileModel!]
+    bcc: [String!]
+    body: String!
+    cc: [String!]
+    createdAt: DateTime!
+    id: Int!
+    replyTo: String
+    subject: String!
+    threadId: Int
+    to: [String!]
+    updatedAt: DateTime!
+}
+
+type EmailModel {
+    attachments: [FileModel!]
+    bcc: [EmailUser!]
+    cc: [EmailUser!]
+    createdAt: DateTime!
+    from: EmailUser!
+    fromMe: Boolean!
+    html: String
+    id: Int!
+    mailBox: [EmailBox!]!
+    messageId: String!
+    read: Boolean!
+    replyTo: String
+    subject: String!
+    text: String
+    threadId: Int
+    to: [EmailUser!]
+}
+
+type EmailThreadModel {
+    emailDraft: EmailDraftModel
+    emails(pagination: PaginationInput! = {take: 10}): EmailsPaginated!
+    id: Int!
+    lastEmail: EmailModel
+    subject: String!
+}
+
+type EmailUser {
+    address: String!
+    person: PersonModel!
+}
+
+type EmailsPaginated {
+    cursor: String
+    data: [EmailModel!]!
+    hasMore: Boolean!
+    totalCount: Int!
+}
+
+type EntityTypeModel {
+    id: Int!
+    title: String!
+}
+
+type EventAlertTypeModel {
+    id: Int!
+    title: String!
+}
+
+type EventModel {
+    alert: EventAlertTypeModel!
+    createdAt: DateTime!
+    eventDate: DateTime!
+    eventEndDate: DateTime
+    followUp: FollowUpEventModel
+    id: Int!
+    lead: FLeadModel
+    meeting: MeetingEventModel
+    notes: String
+    title: String!
+    type: EventTypeModel!
+    typeId: Int!
+    updatedAt: DateTime!
+    user: FUserModel!
+}
+
+type EventTypeModel {
+    id: Int!
+    title: String!
+}
+
+type FContactsList {
+    data: [ContactModel!]!
+}
+
+type FLeadModel {
+    data: LeadModel!
+}
+
+type FLeadsPaginated {
+    cursor: String
+    data: [LeadModel!]!
+    hasMore: Boolean!
+    totalCount: Int!
+}
+
+type FUserModel {
+    data: UserModel!
+}
+
+type FUsersList {
+    data: [UserModel!]!
+}
+
+type FUsersPaginated {
+    cursor: String
+    data: [UserModel!]!
+    hasMore: Boolean!
+    totalCount: Int!
+}
+
+type FieldAccessModel {
+    permissions: FieldPermissionModel!
+    title: String!
+}
+
+type FieldPermissionModel {
+    read: PermissionScope!
+    update: PermissionScope!
+}
+
+type FileModel {
+    createdAt: DateTime!
+    id: Int!
+    mimeType: String!
+    name: String!
+    path: String!
+    resolution: String
+    size: Int!
+    thumbnail: String
+    updatedAt: DateTime!
+}
+
+type FollowUpEventModel {
+    allDay: Boolean!
+    eventId: Int!
+    type: FollowUpTypeModel!
+    typeId: Int!
+}
+
+type FollowUpTypeModel {
+    color: String!
+    id: Int!
+    title: String!
+}
+
+type IndicatorSelectConstraintsModel {
+    default: JSON
+    indicator: PredefinedTableRelation
+    options: [SelectConstraintsOptionModel!]
+    selectsCount: SelectCountMinMaxModel
+}
+
+type InterfacePermissionModel {
+    groupTitle: String!
+    list: [InterfacePermissionValueModel!]!
+}
+
+type InterfacePermissionValueModel {
+    key: String!
+    title: String!
+    value: Boolean!
+}
+
+type KeyedIndicatorSchemaFieldModel {
+    arrayConstraints: ArrayConstraintsModel
+    booleanConstraints: BooleanConstraintsModel
+    dateConstraints: DateConstraintsModel
+    deprecationReason: String
+    disabled: Boolean
+    key: String!
+    numberConstraints: NumberConstraintsModel
+    placeholder: String
+    required: Boolean
+    selectConstraints: IndicatorSelectConstraintsModel
+    stringConstraints: StringConstraintsModel
+    title: String!
+    type: RelationFieldType!
+}
+
+type LanguageModel {
+    countries: [CountryModel!]
+    id: Int!
+    shortCode: String!
+    title: String!
+}
+
+type LeadIntentionModel {
+    id: Int!
+    title: String!
+}
+
+type LeadModel {
+    adSource: AdSourceModel
+    adTags: [AdTagModel!]
+    areaSize: PropertyAreaSizeModel
+    avatar: FileModel
+    bedrooms: PropertyRoomModel
+    birthDate: DateTime
+    budget: Float
+    channelSource: ChannelSourceModel
+    city: CityModel
+    color: ColorModel!
+    communities: [CommunityModel!]
+    contacts: FContactsList
+    country: CountryModel
+    createdAt: DateTime
+    displayName: String
+    displaySource: String
+    firstName: String
+    id: Int!
+    intention: LeadIntentionModel
+    itemType: ItemType!
+    languages: [LanguageModel!]
+    lastName: String
+    nationality: NationalityModel
+    personId: Int!
+    projects: [ProjectModel!]
+    propertyType: PropertyTypeModel
+    quality: Int
+    responsibleAgent: FUserModel
+    secondName: String
+    seen: Boolean
+    source: LeadSourceModel
+    sourceDetails: String
+    status: LeadStatusModel
+    updatedAt: DateTime
+    webSource: WebSourceModel
+}
+
+type LeadSourceModel {
+    id: Int!
+    title: String!
+}
+
+type LeadStatusModel {
+    backgroundColor: String!
+    color: String!
+    createdAt: DateTime!
+    id: Int!
+    legacyColor: String!
+    step: Int!
+    stepsCount: Int!
+    title: String!
+    updatedAt: DateTime!
+}
+
+type LocationMessage {
+    latitude: Float!
+    longitude: Float!
+}
+
+type MeetingEventModel {
+    acceptedInvites: FUsersList!
+    address: String!
+    emailInvites: [String!]!
+    eventId: Int!
+    latitude: Float
+    longitude: Float
+    pendingInvites: FUsersList!
+    rejectedInvites: FUsersList!
+    showAsBusy: Boolean!
+}
+
+type MessageModel {
+    chat: ChatModel!
+    chatId: Int!
+    contacts: [String!]
+    createdAt: DateTime!
+    from: ChatParticipantModel
+    fromMe: Boolean!
+    id: Int!
+    location: LocationMessage
+    media: FileModel
+    read: Boolean!
+    reply: MessageModel
+    score: Int
+    text: String
+    textActions: JSON
+    type: MessageType!
+    updatedAt: DateTime!
+}
+
+type Mutation {
+    authenticate(params: AuthenticateEntityInput!): AuthenticatedEntity!
+    createLead(params: CreateLeadInput!): FLeadModel!
+    createUser(params: CreateUserInput!): FUserModel!
+    logOut: Boolean!
+    updateLead(params: UpdateLeadInput!): FLeadModel!
+    updateUser(params: UpdateUserInput!): FUserModel!
+}
+
+type NationalityModel {
+    country: CountryModel
+    countryId: Int
+    id: Int!
+    title: String!
+}
+
+type NumberConstraintsModel {
+    default: Int
+    max: Int
+    min: Int
+}
+
+type PermissionModel {
+    action: String
+    businessProcessId: Int
+    createdAt: DateTime!
+    id: Int!
+    interfaceId: Int
+    properties: JSON
+    role: RoleModel!
+    roleId: Int!
+    scope: PermissionScope!
+    subject: String
+    type: PermissionType!
+    updatedAt: DateTime!
+}
+
+type PersonModel {
+    avatar: String!
+    birthDate: DateTime
+    calls(pagination: PaginationInput! = {take: 10}): CallsPaginated!
+    contacts: [ContactModel!]!
+    description: JSONObject!
+    displayName: String!
+    firstName: String
+    id: Int!
+    isUser: Boolean!
+    lastName: String
+    leads: [LeadModel!]!
+    secondName: String
+}
+
+type PhoneContactModel {
+    color: String!
+    contactId: Int!
+    phone: String!
+    telegramId: String
+    telegramUsername: String
+    title: String!
+}
+
+type PieChartModel {
+    data: JSON!
+    title: String!
+}
+
+type PoolModel {
+    assigned: Boolean!
+    chat: ChatModel!
+    closeTime: DateTime
+    createdAt: DateTime!
+    id: Int!
+    lead: FLeadModel!
+    requested: Boolean!
+    seen: Boolean!
+    updatedAt: DateTime!
+}
+
+type ProjectModel {
+    id: Int!
+    title: String!
+}
+
+type PropertyAreaSizeModel {
+    id: Int!
+    title: String!
+}
+
+type PropertyRoomModel {
+    id: Int!
+    title: String!
+}
+
+type PropertyTypeModel {
+    id: Int!
+    title: String!
+}
+
+type Query {
+    cities(countryId: Int!): [CityModel!]!
+    fetchAdSources: [AdSourceModel!]!
+    fetchChannelSources: [ChannelSourceModel!]!
+    fetchCommunities: [CommunityModel!]!
+    fetchCompanyTypes: [CompanyTypeModel!]!
+    fetchContactCommunicationMethods(params: ContactCommunicationMethodsInput!): [ContactCommunicationMethod!]!
+    fetchCountries: [CountryModel!]!
+    fetchEntityTypes: [EntityTypeModel!]!
+    fetchLead(params: FetchLeadInput!): FLeadModel
+    fetchLeadIntentionTypes: [LeadIntentionModel!]!
+    fetchLeadSources: [LeadSourceModel!]!
+    fetchLeadStatusTypes: [LeadStatusModel!]!
+    fetchLeads(pagination: PaginationInput! = {take: 10}, params: FetchLeadsInput! = {ascending: false}): FLeadsPaginated!
+    fetchProjects: [ProjectModel!]!
+    fetchPropertyTypes: [PropertyTypeModel!]!
+    fetchWebSources: [WebSourceModel!]!
+    languages: [LanguageModel!]!
+    nationalities: [NationalityModel!]!
+    propertyAreaSizes: [PropertyAreaSizeModel!]!
+    propertyRooms: [PropertyRoomModel!]!
+    queryCities(query: String!): [TagQueryModel!]!
+}
+
+type RelationConstraintsModel {
+    default: [Int!]
+    onDelete: RelationMutationSideEffect!
+    referenceType: ReferenceType!
+    tableInfo: TableInfoModel!
+    unique: Boolean!
+}
+
+type RelationConstraintsOptionModel {
+    title: String!
+    value: Int!
+}
+
+type RoleModel {
+    businessProcesses: [BusinessProcessPermissionModel!]!
+    createdAt: DateTime!
+    description: String
+    id: Int!
+    interfaces: [InterfacePermissionModel!]!
+    permissions: [PermissionModel!]
+    tables: [TableAccessModel!]!
+    title: String!
+    updatedAt: DateTime!
+    users(pagination: PaginationInput! = {take: 10}, params: UsersParamsInput = {}): FUsersPaginated!
+}
+
+type SearchPeriodModel {
+    id: Int!
+    title: String!
+    value: String!
+}
+
+type SelectConstraintsModel {
+    default: JSON
+    options: [SelectConstraintsOptionModel!]
+    selectsCount: SelectCountMinMaxModel
+}
+
+type SelectConstraintsOptionModel {
+    title: String!
+    value: JSON!
+}
+
+type SelectCountMinMaxModel {
+    max: Int
+    min: Int
+}
+
+type SessionContactModel {
+    contactId: Int!
+    sessionId: String!
+}
+
+type StringConstraintsModel {
+    default: String
+    max: Int
+    min: Int
+}
+
+type SystemActivityModel {
+    id: Int!
+    title: String!
+}
+
+type TableAccessModel {
+    fields: [FieldAccessModel!]!
+    permissions: TablePermissionModel!
+    title: String!
+}
+
+type TableInfoModel {
+    connectionField: TableSideFieldModel!
+    onDelete: RelationMutationSideEffect!
+    table: String!
+}
+
+type TablePermissionModel {
+    create: PermissionScope!
+    delete: PermissionScope!
+    export: PermissionScope!
+    import: PermissionScope!
+    read: PermissionScope!
+    update: PermissionScope!
+}
+
+type TableSideFieldModel {
+    title: String!
+}
+
+type TagCategoryModel {
+    color: String
+    combineGroups: Boolean!
+    createdAt: DateTime!
+    id: Int!
+    tags: TagsPaginated
+    title: String!
+    updatedAt: DateTime!
+}
+
+type TagModel {
+    adSource: AdSourceModel
+    adTag: AdTagModel
+    category: TagCategoryModel!
+    channelSource: ChannelSourceModel
+    city: CityModel
+    community: CommunityModel
+    country: CountryModel
+    createdAt: DateTime!
+    department: DepartmentTagModel
+    id: Int!
+    language: LanguageModel
+    leadIntention: LeadIntentionModel
+    leadSource: LeadSourceModel
+    nationality: NationalityModel
+    project: ProjectModel
+    propertyAreaSize: PropertyAreaSizeModel
+    propertyRoom: PropertyRoomModel
+    propertyType: PropertyTypeModel
+    source: LeadSourceModel
+    title: String!
+    type: TagType!
+    updatedAt: DateTime!
+    webSource: WebSourceModel
+}
+
+type TagQueryModel {
+    _formatted: TagQueryModel!
+    categoryTitle: String!
+    details: JSON!
+    id: Int!
+    tagId: Int!
+    title: String!
+    type: TagType!
+}
+
+type TagsPaginated {
+    cursor: String
+    data: [TagModel!]!
+    hasMore: Boolean!
+    totalCount: Int!
+}
+
+type UpdateActivityData {
+    data: String!
+    ids: [Int!]!
+}
+
+type UpdateActivityModel {
+    after: UpdateActivityData
+    before: UpdateActivityData
+    createdAt: DateTime!
+    field: String!
+    id: Int!
+    isPrimitive: Boolean!
+    model: String!
+}
+
+type UserModel {
+    activities(pagination: PaginationInput! = {take: 10}): ActivitiesPaginated
+    avatar: FileModel
+    birthDate: DateTime
+    bitrixId: Int!
+    createdAt: DateTime!
+    daysWithoutDeal: Int
+    departments: [DepartmentModel!]
+    displayName: String!
+    emailContact: EmailContactModel
+    firstName: String
+    id: Int!
+    lastName: String
+    leads(pagination: PaginationInput! = {take: 10}): FLeadsPaginated
+    leadsCount: Int
+    needsPasswordChange: Boolean!
+    phoneContact: PhoneContactModel
+    roles: [RoleModel!]
+    score: Float
+    secondName: String
+    secondaryStatus: [UserStatus!]!
+    status: UserStatus!
+    statusTitle: String!
+    tags: [TagModel!]
+    updatedAt: DateTime!
+}
+
+type VisitedPageModel {
+    bedrooms: Int!
+    community: String!
+    price: Int!
+    propertyType: String!
+    url: String!
+    visitedDate: Int!
+}
+
+type WebSourceModel {
+    id: Int!
+    title: String!
+    url: String!
+}
+
+enum BusinessProcessEntity {
+    CHAT
+    DEAL
+    DEPARTMENT
+    LEAD
+    OTHER
+    POOL
+    USER
+    WEBHOOK
+}
+
+enum ChatCategory {
+    channel
+    group
+    private
+}
+
+enum EmailBox {
+    anywhere
+    category_forums
+    category_personal
+    category_promotions
+    category_social
+    category_updates
+    draft
+    important
+    inbox
+    scheduled
+    sent
+    snoozed
+    spam
+    starred
+    trash
+    unread
+}
+
+enum ItemType {
+    car
+    furniture
+    property
+}
+
+enum MessageType {
+    animation
+    audio
+    contact
+    document
+    location
+    photo
+    service
+    sticker
+    text
+    video
+    voice
+}
+
+enum PermissionScope {
+    DISABLED
+    LEVEL1
+    LEVEL2
+    LEVEL3
+    LEVEL4
+}
+
+enum PermissionType {
+    BUSINESS_PROCESS
+    INTERFACE
+    TABLE
+}
+
+enum PredefinedTableRelation {
+    DEAL
+    DEPARTMENT
+    LEAD
+    USER
+}
+
+enum ReferenceType {
+    HAS_MANY
+    HAS_ONE
+    MANY_TO_MANY
+    MANY_TO_ONE
+    ONE_TO_MANY
+    ONE_TO_ONE
+}
+
+enum RelationFieldType {
+    array
+    boolean
+    date
+    number
+    relation
+    select
+    string
+}
+
+enum RelationMutationSideEffect {
+    CASCADE
+    PROHIBIT
+    SET_NULL
+}
+
+enum TagType {
+    AD_SOURCE
+    AD_TAG
+    CHANNEL_SOURCE
+    CITY
+    COMMUNITY
+    COUNTRY
+    CUSTOM
+    DEPARTMENT
+    LANGUAGE
+    LEAD_INTENTION
+    LEAD_SOURCE
+    NATIONALITY
+    PROJECT
+    PROPERTY_AREA_SIZE
+    PROPERTY_ROOM
+    PROPERTY_TYPE
+    WEB_SOURCE
+}
+
+enum UserStatus {
+    DEACTIVATED
+    FORCE_OFFLINE
+    MEETING
+    OFFLINE
+    ONLINE
+    OVERDUE
+}
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON
+
+"The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSONObject
+
+input ArrayConstraintsInput {
+    default: [String!]
+    max: Int
+    min: Int
+}
+
+input AuthenticateEntityInput {
+    cloudMessagesToken: String
+    email: String!
+    password: String!
+}
+
+input BooleanConstraintsInput {
+    default: Boolean
+}
+
+input ContactCommunicationMethodsInput {
+    entityId: Int!
+    leadId: Int
+}
+
+"Provide only one of the fields"
+input ContactDataInput {
+    email: String
+    phone: String
+    telegramId: String
+    telegramUsername: String
+}
+
+input CreateLeadInput {
+    areaSizeId: Int
+    bedroomsId: Int
+    birthDate: DateTime
+    budget: Float
+    cityId: Int
+    communityIds: [Int!]
+    contacts: [ContactDataInput!]!
+    countryId: Int
+    firstName: String!
+    intentionId: Int!
+    languageIds: [Int!]!
+    lastName: String
+    leadSourceId: Int
+    nationalityId: Int
+    projectIds: [Int!]
+    propertyTypeId: Int
+    secondName: String
+}
+
+input CreateUserInput {
+    avatarId: Int
+    bitrixId: Int
+    email: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+    phone: String!
+    secondName: String
+    telegramId: String
+    telegramUsername: String
+}
+
+input DateConstraintsInput {
+    default: DateTime
+}
+
+input FetchLeadInput {
+    leadId: Int!
+}
+
+input FetchLeadsInput {
+    adSourceIds: [Int!]
+    ascending: Boolean! = false
+    channelSourceIds: [Int!]
+    cityIds: [Int!]
+    communityIds: [Int!]
+    countryIds: [Int!]
+    dateRangeForEvents: Boolean
+    from: DateTime
+    intentionIds: [Int!]
+    languageIds: [Int!]
+    nationalityIds: [Int!]
+    periodId: Int
+    presetId: Int
+    projectIds: [Int!]
+    propertyTypeIds: [Int!]
+    query: String
+    responsibleAgentId: Int
+    seenLeads: Boolean
+    statusIds: [Int!]
+    to: DateTime
+    unseenLeads: Boolean
+    webSourceIds: [Int!]
+}
+
+input IndicatorSelectConstraintsInput {
+    default: JSON
+    indicator: PredefinedTableRelation
+    options: [SelectConstraintsOptionInput!]
+    selectsCount: SelectCountMinMaxInput
+}
+
+input NumberConstraintsInput {
+    default: Int
+    max: Int
+    min: Int
+}
+
+input PaginationInput {
+    cursor: String
+    take: Int = 10
+}
+
+input RelationConstraintsInput {
+    default: [Int!]
+    onDelete: RelationMutationSideEffect!
+    referenceType: ReferenceType!
+    tableInfo: TableInfoInput!
+    unique: Boolean!
+}
+
+input SelectConstraintsInput {
+    default: JSON
+    options: [SelectConstraintsOptionInput!]
+    selectsCount: SelectCountMinMaxInput
+}
+
+input SelectConstraintsOptionInput {
+    title: String!
+    value: JSON!
+}
+
+input SelectCountMinMaxInput {
+    max: Int
+    min: Int
+}
+
+input StringConstraintsInput {
+    default: String
+    max: Int
+    min: Int
+}
+
+input TableInfoInput {
+    connectionField: TableSideFieldInput!
+    onDelete: RelationMutationSideEffect!
+    table: String!
+}
+
+input TableSideFieldInput {
+    title: String!
+}
+
+input UpdateLeadInput {
+    areaSizeId: Int
+    bedroomsId: Int
+    birthDate: DateTime
+    budget: Float
+    cityId: Int
+    communityIds: [Int!]
+    countryId: Int
+    firstName: String
+    intentionId: Int
+    languageIds: [Int!]
+    lastName: String
+    leadId: Int!
+    leadSourceId: Int
+    nationalityId: Int
+    projectIds: [Int!]
+    propertyTypeId: Int
+    responsibleAgentId: Int
+    secondName: String
+    seen: Boolean
+    statusId: Int
+    statusReason: String
+}
+
+input UpdateUserInput {
+    avatarId: Int
+    bitrixId: Int
+    firstName: String
+    lastName: String
+    secondName: String
+    status: UserStatus
+    userId: Int!
+}
+
+input UsersParamsInput {
+    query: String
+    statuses: [UserStatus!]
+}

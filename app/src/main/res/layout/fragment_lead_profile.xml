@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="1dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/lead_profile"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/processIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_success"
+                app:tint="@color/light_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:contentDescription="@string/avatar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/displayName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toEndOf="@+id/avatar"
+                    app:layout_constraintTop_toTopOf="@+id/avatar"
+                    tools:text="@tools:sample/full_names" />
+
+                <ImageView
+                    android:id="@+id/countryFlag"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/displayName"
+                    app:layout_constraintStart_toEndOf="@+id/displayName"
+                    app:layout_constraintTop_toTopOf="@+id/displayName"
+                    tools:src="@drawable/edit" />
+
+                <TextView
+                    android:id="@+id/ID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/light_gray"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/avatar"
+                    app:layout_constraintTop_toBottomOf="@+id/displayName"
+                    tools:text="ID: 65464" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.neowise.leads.ui.custom.statusbar.StatusBar
+                android:id="@+id/leadStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:title="@string/select_status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="12dp"
+                app:justifyContent="space_between"
+                android:divider="@drawable/shape_steps_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/leadStatus">
+
+                <com.neowise.leads.ui.custom.CommunicationIcon
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ci_icon="@drawable/ic_call"
+                    app:ci_text="@string/call"/>
+
+                <com.neowise.leads.ui.custom.CommunicationIcon
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ci_icon="@drawable/ic_message"
+                    app:ci_text="@string/message"/>
+
+                <com.neowise.leads.ui.custom.CommunicationIcon
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ci_icon="@drawable/ic_mail"
+                    app:ci_text="@string/mail"
+                    app:ci_enabled="false"/>
+
+                <com.neowise.leads.ui.custom.CommunicationIcon
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ci_icon="@drawable/ic_event"
+                    app:ci_text="@string/follow_up"
+                    app:ci_enabled="false"/>
+
+                <com.neowise.leads.ui.custom.CommunicationIcon
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ci_icon="@drawable/ic_meeting"
+                    app:ci_text="@string/meeting"
+                    app:ci_enabled="false"/>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/general_info"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:useDefaultMargins="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/lead_type">
+
+                    <com.neowise.leads.ui.custom.leadtype.LeadTypeSelection
+                        android:id="@+id/leadType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/lead_type" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/adSource">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/adSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/adSource"
+                        tools:text="@string/unknown"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/country">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/select_country"
+                        tools:text="United States"
+                        app:enableSearch="true"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/webSource">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/webSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/webSource"
+                        tools:text="@string/unknown"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/cityRegion">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/select_city"
+                        tools:text="London"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/channelSource">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/channelSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/channelSource"
+                        tools:text="@string/unknown"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/language">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/language"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/select_language"
+                        tools:text="English"
+                        app:enableSearch="true"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/property_type">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/propertyType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:title="@string/property_type"
+                        tools:text="@string/unknown"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/nationality">
+
+                    <com.neowise.leads.ui.custom.selection.SelectionInput
+                        android:id="@+id/nationality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:title="@string/nationality"
+                        tools:text="@string/nationality"
+                        app:enableSearch="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:hint="@string/birthday"
+                    app:expandedHintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/birthdayEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:hint="@string/birthday"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/budget">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/budget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:hint="from 0 - to 0"
+                        android:inputType="number"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/location">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        tools:text="Dubai Creek Harbour (The Lagoons)"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/cityRegion">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/locationCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        tools:text="London"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/channelSource">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/locationChannelSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        tools:text="@string/unknown"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/language">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/locationLanguage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        tools:text="English"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:expandedHintEnabled="false"
+                    android:hint="@string/property_type">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/locationPropertyType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        tools:text="@string/unknown"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/tags_and_interests"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/demographic"
+                android:textSize="18sp"
+                android:textColor="@color/black_light"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/interests"
+                android:textSize="18sp"
+                android:textColor="@color/black_light"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

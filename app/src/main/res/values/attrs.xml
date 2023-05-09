@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StatusIndicator">
+        <attr name="android:text"/>
+        <attr name="si_indicatorColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="StepProgress">
+        <attr name="st_step" format="integer"/>
+        <attr name="st_max_step" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommunicationIcon">
+        <attr name="ci_enabled" format="boolean"/>
+        <attr name="ci_icon" format="reference"/>
+        <attr name="ci_text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="RadioGridGroup">
+        <attr name="android:id" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="SelectionInput">
+        <attr name="android:title" format="string"/>
+        <attr name="enableSearch" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="StatusBar">
+        <attr name="android:title" format="string"/>
+    </declare-styleable>
+
+</resources>

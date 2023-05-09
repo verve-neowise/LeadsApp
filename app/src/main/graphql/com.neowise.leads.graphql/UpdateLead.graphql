@@ -1,0 +1,41 @@
+mutation UpdateLead(
+    $leadId: Int!,
+    $statusId: Int!,
+    $propertyTypeId: Int!,
+    $intentionId: Int,
+    $birthDate: DateTime,
+    $budget: Float,
+    $cityId: Int,
+    $countryId: Int,
+    $firstName: String,
+    $lastName: String,
+    $languageIds: [Int!],
+    $leadSourceId: Int,
+    $nationalityId: Int,
+    $secondName: String,
+) {
+    updateLead(
+        params: {
+            leadId: $leadId
+            statusId: $statusId
+            propertyTypeId: $propertyTypeId
+            intentionId: $intentionId,
+            birthDate: $birthDate,
+            budget: $budget,
+            cityId: $cityId,
+            countryId: $countryId,
+            firstName: $firstName,
+            lastName: $lastName,
+            languageIds: $languageIds,
+            leadSourceId: $leadSourceId,
+            nationalityId: $nationalityId,
+            secondName: $secondName,
+        }
+    ) {
+        data {
+            status {
+                step
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/main">
+
+    <fragment
+        android:id="@+id/main"
+        android:name="com.neowise.leads.ui.screen.main.MainFragment"
+        android:label="MainFragment" />
+
+    <fragment
+        android:id="@+id/createLead"
+        android:name="com.neowise.leads.ui.screen.createLead.CreateLeadFragment"
+        android:label="CreateLeadFragment">
+        <deepLink
+            app:uri="com.neowise.leads/screens/create-lead"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/leadProfile"
+        android:name="com.neowise.leads.ui.screen.leadProfile.LeadProfileFragment"
+        android:label="LeadProfileFragment">
+        <deepLink
+            app:uri="com.neowise.leads/screens/lead-profile/{id}"
+            />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+</navigation>
